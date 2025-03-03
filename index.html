@@ -3,19 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegram Web App</title>
+  <title>Telegram Auth App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body style="text-align: center; margin-top: 50px;">
-<h1>سلام 😎</h1>
-<p>این مینی اپ تلگرامی منه</p>
+<body class="bg-gray-100 text-center p-10">
+<h1 class="text-3xl font-bold text-blue-500">ورود به پنل</h1>
+
+<button onclick="login()" class="bg-blue-500 text-white px-4 py-2 mt-6 rounded-lg">
+  ورود با تلگرام 🚀
+</button>
 
 <script>
   let tg = window.Telegram.WebApp;
 
-  tg.expand(); // تمام صفحه
-  document.body.innerHTML += `<p>سلام ${tg.initDataUnsafe?.user?.first_name}</p>`;
+  function login() {
+    let user = tg.initDataUnsafe.user;
+
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      window.location.href = "dashboard.html";
+    } else {
+      alert("لطفا از داخل تلگرام وارد شوید!");
+    }
+  }
 </script>
 </body>
 </html>
-
