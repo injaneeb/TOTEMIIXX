@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Web App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body style="text-align: center; margin-top: 50px;">
+<h1>سلام 😎</h1>
+<p>این مینی اپ تلگرامی منه</p>
+
+<script>
+  let tg = window.Telegram.WebApp;
+
+  tg.expand(); // تمام صفحه
+  document.body.innerHTML += `<p>سلام ${tg.initDataUnsafe?.user?.first_name}</p>`;
+</script>
+</body>
+</html>
+
